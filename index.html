@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salir del Bucle</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Salir del bucle</span>
+        </div>
+
+        <div class="top-actions">
+            <button class="ghost" id="btnHome" type="button" title="Volver al inicio">Inicio</button>
+        </div>
+    </header>
+
+    <main class="wrap">
+
+        <!--HOME-->
+        <section class="panel-is-active" id="viewhome" aria-labelledby="homeTitle">
+            <h1 id="homeTitle">¿Qué necesitas ahora mismo?</h1>
+            <p class="sub">No hace falta entenderlo todo. Solo hacer un pequeño movimiento.</p>
+        
+            <div class="grid">
+                <button class="card" id="goSOS" type="button">
+                    <span class="tag">SOS 30s</span>
+                    <h2>Apagar incendio</h2>
+                    <p>Cuando estás en modo pánico mental. 30 segundos para bajar revoluciones.</p>
+                </button>
+                
+                <button class="card" id="goLoop" type="button">
+                    <span class="tag">90s</span>
+                    <h2>Salir del bucle</h2>
+                    <p>Cuerpo → entorno → pensamiento. Cero dramas.</p>
+                </button>
+
+                <button class="card" id="goNotNow" type="button">
+                    <span class="tag">criterio</span>
+                    <h2>No es un problema ahora</h2>
+                    <p>Decide si actúas o aparcas. Y si aparcas: recordatorio + patrón.</p>
+                </button>
+
+                <button class="card" id="goDump" type="button">
+                    <span class="tag">descarga</span>
+                    <h2>Volcado rápido</h2>
+                    <p>Escribes lo que da vueltas. Lo guardas. Sigues con tu vida.</p>
+                </button>
+
+                <button class="card" id="goPatterns" type="button">
+                    <span class="tag">mapa</span>
+                    <h2>Mis patrones</h2>
+                    <p>Ver qué te dispara, qué te calma y qué se repite.</p>
+                </button>
+            </div>
+
+            <p class="note">
+                Si estás en un momento de peligro real o urgencia, prioriza ayuda inmediata (112 o tu servicio local)
+            </p>
+        </section>
+
+        <!--SOS 30s-->
+        <section class="panel" id="viewSOS" aria-labelledby="sosTitle">
+            <div class="panelHead">
+                <h1 id="sosTitle">SOS 30 segundos</h1>
+                <p class="sub">Tu única tarea: seguir el guión. Nada más.</p>
+            </div>
+
+            <div class="box">
+                <div class="sosTimer">
+                    <div class="sosTime" id="sosTime">30</div>
+                    <div class="muted" id="sosHint">Pulsa empezar</div>
+                </div>
+            
+                <ol class="steps">
+                    <li class="step">
+                        <h3> | Suelta tensión</h3>
+                        <p>Aprieta puños 2s y suelta (x3).</p>
+                    </li>
+                    <li class="step">
+                        <h3>Orientación</h3>
+                        <p>Nombra (en voz alta o mentalmente) 3 cosas que ves.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Frase corta</h3>
+                        <p>Ahora mismo estoy a salvo. Mi mente solo quiere protegerme. No hay peligro real.</p>
+                    </li>
+                </ol>
+            
+                <div clas="row">
+                    <button class="primary" id="sosStart" type="button">Empezar</button>
+                    <button class="ghost" id?sosStop type="button">Parar</button>
+                </div>
+            </div>      
+        </section>
+
+        <!--SALIR DEL BUCLE (90s)-->
+        <section class="panel" id="viewLoop" aria-labelledby="loopTitle">
+            <div class="panelHead">
+                <h1 id="loopTitle">Salir del bucle</h1>
+                <p class="sub">Tres mini pasos: cuerpo → entorno → pensamiento.</p>
+            </div>
+
+            <ol class="steps">
+                <li class="step">
+                    <h3>Respira 4-6 (x6)</h3>
+                    <p>Inhala 4s. Exhala 6s. Tu sistema nervioso entiende de números.</p>
+
+                    <div class="breath">
+                        <div class="breathRing" id="breathRing" aria-hidden="true"></div>
+                        <div class="breathText">
+                            <div class="big" id="breathCue">Listo</div>
+                            <div class="muted" id="breathCount">6 ciclos</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="primary" id="starBreath" type="button">Empezar respiración</button>
+                        <button class="ghost" id="stopBreath" type="button">Parar</button>
+                    </div>
+                </li>
+
+                <li class="step">
+                    <h3>5 - 4 - 3 - 2 - 1</h3>
+                    <p>5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas.</p>
+                    <button class="ghost" id="copyGrounding" type="button">Copiar guía</button>
+                </li>
+
+                <li class="step">
+                    <h3>Frase ancla</h3>
+                    <p class="muted">Elige una. La repetición corta el bucle.</p>
+
+                    <div class="chip" id="anchors">
+                        <button class="chip" type="button">No tengo que resolver esto ahora.</button>
+                        <button class="chip" type="button=">Mi mente crea ruido, no hay peligro real.</button>
+                        <button class="chip" type="button">Un pequeño paso. Solo uno.</button>
+                    </div>
+
+                    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+                </li>
+            </ol>
+        </section>
+
+        <!--NO ES UN PROBLEMA AHORA-->
+        <section class="panel" id="viewNotNow" aria-labelledby="nnTitle">
+            <div class="panelHead">
+                <h1 id="nnTitle">No es un problema ahora</h1>
+                <p class="sub">Decidimos rápido si toca actuar o aparcar el pensamiento.</p>
+            </div>
+
+            <div class="box">
+                <h3>Checklist de decisión (20s)</h3>
+
+                <label class="check"><input type="checkbox" id="qNow"> ¿Puedo hacer algo útil en 10 minutos?</label>
+                <label class="check"><input type="checkbox" id="qControl"> ¿Esto depende de mí (aunque sea una parte)?</label>
+                <label class="check"><input type="checkbox" id=qPruebas> ¿Tengo pruebas de que esto es real?</label>
+                <label class="check"><input type="checkbox" id="qInfo"> ¿Tengo suficiente información para decidir?</label>
+
+                <button class="primary" id="decide" type="button"></button>
+
+                <div class="result" id="nnResult" hidden>
+                    <h3 id="nnHeadline">Resultado</h3>
+                    <p id="nnText" class="muted"></p>
+
+                    <div class="row">
+                        <button class="ghost" id="toggleActionBox" type="button">Guardar 1 acción</button>
+                        <button class="ghost" id="toggleReminderBox" type="button">Programar recordatorio</button>
+                    </div>
+
+                    <!--Caja: guardar acción (cuando sí hay control)-->
+                    <div class="row" id="actionBox" hidden>
+                        <input class="input" id="actionInput" type="text" placeholder="Una acción mínima (10 min): enviar mensaje, pedir info, escribir 3 bullets..." />
+                        <button class="primary" id="storeAction" type="button">Guardar</button>
+                    </div>
+
+                    <!--Caja: recordatorio (cuando lo aparcas)-->
+                    <div class="reminderBox" id="reminderBox" hidden>
+                        <p class="muted">Cuando tu mente vuelva: "Está aparcado. Lo miro en otro momento."</p>
+
+                        <div class="row">
+                            <label class="mini">
+                                En
+                                <select class="select" id="reminderIn">
+                                    <option value="15">15 min</option>
+                                    <option value="30" selected>30 min</option>
+                                    <option value="60">1 h</option>
+                                    <option value="180">3 h</option>
+                                    <option value="1440">Mañana</option>    
+                                </select>
+                            </label>
+
+                            <button class="primary" id="setReminder" type="button">Guardar recordatorio</button>
+                            <button class="ghost" id="enableNotifications" type="button">Activar notificaciones</button>
+                        </div>
+
+                        <input class="input" id="reminderNote" type="text" placeholder="Etiqueta (opcional): 'hablar con X', 'miedo a...', 'decisión...'" />
+                    </div>
+                </div>
+
+                <!--Registro de patrón (siempre disponible)-->
+                <div class="patternBox">
+                    <h4>Registrar patrón (30s)</h4>
+
+                    <div class="row">
+                        <input class="input" id="patTrigger" type="text" placeholder="¿Qué lo disparó? (ej:mensaje, silencio, error...)" />
+                        <select class="select" id="patTheme">
+                            <option value="">Tema</option>
+                            <option>rechazo</option>
+                            <option>perfeccionismo</option>
+                            <option>incertidumbre</option>
+                            <option>salud</option>
+                            <option>trabajo</option>
+                            <option>relaciones</option>
+                            <option>dinero</option>
+                            <option>otro</option>
+                        </select>
+                    </div>
+
+                    <textarea class="textarea" id="patThought" rows="4" placeholder="¿Qué pensamiento repetía la mente? (1-2 frases)"></textarea>
+
+                    <div class="row">
+                        <label class="mini">
+                            Intensidad
+                            <input class="range" id="patIntensity" type="range" min="1" max="10" value="6" />
+                            <span class="pill" id="patIntensityLabel">6/10</span>
+                        </label>
+
+                        <select class="select" id="patMove">
+                            <option value="">Qué hice</option>
+                            <option>SOS 30s</option>
+                            <option>Respirar 4-6</option>
+                            <option>Grounding 5-4-3-2-1</option>
+                            <option>Lo aparqué</option>
+                            <option>Acción pequeña</option>
+                            <option>Otra cosa</option>
+                        </select>
+
+                        <button class="primary" id="savePattern" type="button">Guardar patrón</button>
+                    </div>
+
+                    <!--Listas guardadas-->
+                    <div class="saved" id="savedAreas">
+                        <div class="savedCol">
+                            <h4>Acciones guardadas</h4>
+                            <ul id="actionsList"></ul>
+                            <button class="ghost" id="clearActions" type="button">Vaciar</button>
+                        </div>
+
+                        <div class="savedCol">
+                            <h4>Recordatorios</h4>
+                            <ul id="remindersList"></ul>
+                            <button class="ghost" id="clearReminders" type="button">Vaciar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--VOLCADO-->
+        <section class="panel" id="viewDump" aria-labelledby="dumpTitle">
+            <div class="panelHead">
+                <h1 id="dumpTitle">Volcado rápido</h1>
+                <p class="sub">Escribe sin editar. Guarda. Vuelve al presente.</p>
+            </div>
+
+            <div class="box">
+                <textarea class="textarea" id="dumpText" rows="8" placeholder="¿Qué está pasando en tu cabeza ahora mismo?"></textarea>
+
+                <div class="row">
+                    <button class="primary" id="saveDump" type="button">Guardar en el cajón</button>
+                    <button class="ghost" id="clearDump" type="button">Borrar</button>
+                </div>
+
+                <div class="saved" id="dumpSaved" hidden>
+                    <h4>Cajón (guardado local)</h4>
+                    <ul id="dumpList"></ul>
+                    <button class="ghost" id="clearDumpAll" type="button">Vaciar cajón</button>
+                </div>
+            </div>
+        </section>
+
+        <!--PATRONES (vista)-->
+        <section class="panel" id="viewPatterns" aria-labelledby="patTitle">
+            <div class="panelHead">
+                <h1 id="patTitle">Mis patrones</h1>
+                <p class="sub">No para juzgarte. Para verte con claridad.</p>
+            </div>
+
+            <div class="box">
+                <div class="row">
+                    <button clasS="ghost" id="exportPatterns" type="button">Exportar JSON</button>
+                    <button class="ghost" id="clearPatterns" type="button">Borrar todo</button>
+                </div>
+
+                <div class="patterns" id="patternsWrap"></div>
+                <p class="muted" id="patternsEmpty" hidden>Aún no hay registros. Cuando guardes uno, aparecerá aquí.</p>
+            </div>           
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
