@@ -23,7 +23,7 @@
     <main class="wrap">
 
         <!--HOME-->
-        <section class="panel-is-active" id="viewhome" aria-labelledby="homeTitle">
+        <section class="panel is-active" id="viewhome" aria-labelledby="homeTitle">
             <h1 id="homeTitle">¿Qué necesitas ahora mismo?</h1>
             <p class="sub">No hace falta entenderlo todo. Solo hacer un pequeño movimiento.</p>
         
@@ -79,7 +79,7 @@
             
                 <ol class="steps">
                     <li class="step">
-                        <h3> | Suelta tensión</h3>
+                        <h3>Suelta tensión</h3>
                         <p>Aprieta puños 2s y suelta (x3).</p>
                     </li>
                     <li class="step">
@@ -94,7 +94,7 @@
             
                 <div clas="row">
                     <button class="primary" id="sosStart" type="button">Empezar</button>
-                    <button class="ghost" id?sosStop type="button">Parar</button>
+                    <button class="ghost" id="sosStop" type="button">Parar</button>
                 </div>
             </div>      
         </section>
@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="primary" id="starBreath" type="button">Empezar respiración</button>
+                        <button class="primary" id="startBreath" type="button">Empezar respiración</button>
                         <button class="ghost" id="stopBreath" type="button">Parar</button>
                     </div>
                 </li>
@@ -139,6 +139,7 @@
                         <button class="chip" type="button">No tengo que resolver esto ahora.</button>
                         <button class="chip" type="button=">Mi mente crea ruido, no hay peligro real.</button>
                         <button class="chip" type="button">Un pequeño paso. Solo uno.</button>
+                        <button class="chip" type="button">Estoy a salvo.</button>
                     </div>
 
                     <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -161,7 +162,7 @@
                 <label class="check"><input type="checkbox" id=qPruebas> ¿Tengo pruebas de que esto es real?</label>
                 <label class="check"><input type="checkbox" id="qInfo"> ¿Tengo suficiente información para decidir?</label>
 
-                <button class="primary" id="decide" type="button"></button>
+                <button class="primary" id="decide" type="button">Decidir</button>
 
                 <div class="result" id="nnResult" hidden>
                     <h3 id="nnHeadline">Resultado</h3>

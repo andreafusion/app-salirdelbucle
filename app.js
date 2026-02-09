@@ -7,7 +7,7 @@ function escapeHtml(str) {
         .replaceAll(">","&gt;");
 }
 
-function nowISO() { return new Date().tolSOString(); }
+function nowISO() { return new Date().toISOString(); }
 
 function formatDateTime(ts) {
     const d = new Date(ts);
@@ -25,7 +25,7 @@ function say(msg) {
 
 /*Navegación entre pantallas*/
 const views = {
-    home: $("#viewHome"),
+    home: $("#viewhome"),
     sos: $("#viewSOS"),
     loop: $("#viewLoop"),
     notNow: $("#viewNotNow"),
@@ -45,15 +45,15 @@ function show(viewKey) {
 $("#btnHome").addEventListener("click", () => show("home"));
 $("#goSOS").addEventListener("click", () => show("sos"));
 $("#goLoop").addEventListener("click", () => show("loop"));
-$("#goNotNow").addEventListener("click", () => show("dump"));
-$("goDump").addEventListener("click", () => show("dump"));
+$("#goNotNow").addEventListener("click", () => show("notNow"));
+$("#goDump").addEventListener("click", () => show("dump"));
 $("#goPatterns").addEventListener("click", () => show("patterns"));
 
 /*SOS 30s (temporizador simple)*/
 let sosTimer = null;
 let sosLeft = 30;
 
-const sosTime = $("sosTime");
+const sosTime = $("#sosTime");
 const sosHint = $("#sosHint");
 
 function setSOS(text, hint) {
@@ -89,8 +89,8 @@ function startSOS() {
     }, 1000);
 }
 
-$("sosStart").addEventListener("click", startSOS);
-$("sosStop").addEventListener("click", stopSOS);
+$("#sosStart").addEventListener("click", startSOS);
+$("#sosStop").addEventListener("click", stopSOS);
 
 /*Salir del bucle: respiración 4-6*/
 let breathTimer = null;
@@ -215,7 +215,7 @@ $("#storeAction").addEventListener("click", () => {
     say("Acción guardada ✅");
 });
 
-$("clearActions").addEventListener("click", () => {
+$("#clearActions").addEventListener("click", () => {
     localStorage.removeItem(LS_ACTIONS);
     renderActions();
     say("Acciones vaciadas 🧺");
@@ -254,7 +254,7 @@ async function enableNotifications() {
     if (res === "granted") say("Notificaciones activadas ✅");
     else say("Sin permiso (no pasa nada) 🙂");
 }
-$("enableNotification").addEventListener("click", enableNotifications);
+$("#enableNotifications").addEventListener("click", enableNotifications);
 
 /*Programar recordatorio*/
 $("#setReminder").addEventListener("click", () => {
@@ -277,7 +277,7 @@ $("#setReminder").addEventListener("click", () => {
 });
 
 /*Limpiar recordatorios*/
-$("clearReminders").addEventListener("click", () => {
+$("#clearReminders").addEventListener("click", () => {
     localStorage.removeItem(LS_REMINDERS);
     renderReminders();
     say("Recordatorios vaciados 🧺");
@@ -286,12 +286,12 @@ $("clearReminders").addEventListener("click", () => {
 /*Chequeo periódico (si hay recordatorios vencidos, avisamos)*/
 function checkReminders() {
     const reminders = getReminders();
-    if (reminders.lenght === 0) return;
+    if (reminders.length === 0) return;
 
     const now = Date.now();
     const due = reminders.filter(r => r.when <= now);
 
-    if (due.lenght === 0) return;
+    if (due.length === 0) return;
 
     //Mostramos aviso interno
     const first = due[0];
@@ -330,7 +330,7 @@ $("#toggleActionBox").addEventListener("click", () => {
     if (!actionBox.hidden) $("#actionInput").focus();
 });
 
-$("#togglereminderBox").addEventListener("click", () => {
+$("#toggleReminderBox").addEventListener("click", () => {
     reminderBox.hidden = !reminderBox.hidden;
     if (!reminderBox.hidden) reminderNote.focus();
 });
@@ -338,7 +338,7 @@ $("#togglereminderBox").addEventListener("click", () => {
 $("#decide").addEventListener("click", () => {
     nnResult.hidden = false;
 
-    const yesCount = [qNow.checked, qControl.checked, qInfo.checked].filter(Boolean).lenght;
+    const yesCount = [qNow.checked, qControl.checked, qInfo.checked].filter(Boolean).length;
 
     if (yesCount >= 2) {
         nnHeadline.textContent = "Acción mínima (10 min)";
@@ -415,7 +415,7 @@ const patternsEmpty = $("#patternsEmpty");
 function renderPatterns() {
     const patterns = getPatterns();
 
-    patternsEmpty.hidden = patterns.lenght !== 0;
+    patternsEmpty.hidden = patterns.length !== 0;
     patternsWrap.innerHTML = patterns.map(p => {
         const when = formatDateTime(p.createdAt);
         const theme = p.theme ? `<span class="pill">tema: ${escapeHtml(p.theme)}</span>` : "";
@@ -473,7 +473,7 @@ function setDump(arr) {
 function renderDump() {
     const items = getDump();
     dumpList.innerHTML = items.map(t => `<li>${escapeHtml(t)}</li>`).join("");
-    dumpSaved.hidden = items.lenght === 0;
+    dumpSaved.hidden = items.length === 0;
 }
 
 $("#saveDump").addEventListener("click", () => {

@@ -335,7 +335,9 @@ h1{
 /*Chips*/
 .chips{ display:flex; gap: 10px; flex-wrap:wrap; }
 
-.chip{
+.chip{   
+    white-space: normal;
+    max-width: 100%;
     border-radius: 999px;
     border: 1px solid rgba(140,110,190,.16);
     background: rgba(255,255,255,.72);
@@ -438,4 +440,16 @@ h1{
     h1{ font-size: 30px; }
     .saved{grid-template-columns: 1fr; }
     .range{width: 100%; }
+}
+
+/* En móvil: que cada burbuja sea "full width" y se vea ordenado */
+@media (max-width: 520px){
+  .chips{
+    flex-direction: column;     /* una debajo de otra */
+    align-items: stretch;
+  }
+  .chip{
+    width: 100%;
+    text-align: center;         /* opcional, queda más cute */
+  }
 }
