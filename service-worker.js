@@ -53,7 +53,7 @@ self.addEventListener("fetch", (event) => {
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js").catch(() => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {
       // Si falla, no pasa nada: la app sigue funcionando como web
     });
   });
