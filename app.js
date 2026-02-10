@@ -189,7 +189,7 @@ const LS_PATTERNS = "bucle_patterns";
 const actionsList = $("#actionsList");
 
 function getActions() {
-    return JSON.parse(localStorage.getItem(LS_ACTIONS) || "[]");
+  return JSON.parse(localStorage.getItem(LS_ACTIONS) || "[]");
 }
 
 function setActions(arr) {
@@ -298,7 +298,7 @@ function checkReminders() {
     const label =first.note ? `\n\nEtiqueta: ${first.note}` : "";
     alert(`🧠 Momento pactado\n\nEsto estaba aparcado. Ahora puedes mirarlo (o reprogramarlo).${label}`);
 
-    //Si hay permiso, tambiñén notificación (cuando la app está abierta)
+    //Si hay permiso, también notificación (cuando la app está abierta)
     if ("Notification" in window && Notification.permission === "granted") {
         new Notification("Momento pactado", {
             body: first.note ?`Etiqueta: ${first.note}` : "Esto estaba aparcado. Ahora puedes mirarlo.",
@@ -372,7 +372,7 @@ const patMove = $("#patMove");
 function getPatterns() {
     return JSON.parse(localStorage.getItem(LS_PATTERNS) || "[]");
 }
-function setPattern(arr) {
+function savePattern(arr) {
     localStorage.setItem(LS_PATTERNS, JSON.stringify(arr));
 }
 
@@ -399,7 +399,7 @@ $("#savePattern").addEventListener("click", () => {
 
     const patterns = getPatterns();
     patterns.unshift(entry);
-    setPatterns(patterns);
+    savePattern(patterns);
 
     //limpiamos campos suaves (no todos, por si quieres repetir tema)
     patTrigger.value ="";
