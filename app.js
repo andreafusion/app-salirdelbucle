@@ -188,9 +188,19 @@ const LS_PATTERNS = "bucle_patterns";
 
 const actionsList = $("#actionsList");
 
-function getActions() {
-  return JSON.parse(localStorage.getItem(LS_ACTIONS) || "[]");
+function getActions(){
+  const raw = localStorage.getItem(LS_ACTIONS);
+
+  if (!raw || raw === "undefined") return [];
+
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
 }
+
 
 function setActions(arr) {
     localStorage.setItem(LS_ACTIONS, JSON.stringify(arr));
@@ -208,7 +218,7 @@ $("#storeAction").addEventListener("click", () => {
 
     const actions = getActions();
     actions.unshift(val);
-    setActions();
+    setActions(actions);
 
     input.value ="";
     renderActions();
