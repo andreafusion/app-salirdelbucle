@@ -1,0 +1,23 @@
+{
+  "name": "Salir del bucle",
+  "short_name": "Bucle",
+  "description": "Herramientas rápidas para cortar el overthinking: SOS, grounding, recordatorios y patrones.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7ff",
+  "theme_color": "#ff7ac7",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

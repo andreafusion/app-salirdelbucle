@@ -447,15 +447,28 @@ $("#clearPatterns").addEventListener("click", () => {
 
 $("#exportPatterns").addEventListener("click", async ()=> {
     const data = JSON.stringify(getPatterns(), null, 2);
-    try {
-        await navigator.clipboard.writeText(data);
-        say("Exportando al portapapeles ✅");
-    } catch {
-        //fallback simple: abre nueva pestaña
-        const blob = new Blob([data], {type: "application/json"});
-        const url = URL.createObjectURL(blob);
-        window.open(url,"_blank");
-    }
+      // 1) Intento: copiar al portapapeles (cuando el navegador lo permite)
+  try {
+    await navigator.clipboard.writeText(data);
+    say("Copiado al portapapeles ✅");
+    return;
+  } catch {
+    // seguimos al fallback
+  }
+
+  // 2) Fallback robusto: descarga como archivo .json
+  const blob = new Blob([data], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "salir-del-bucle-patrones.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+  say("Descarga iniciada ✅");
 });
 
 /*Volcado rápido*/
