@@ -355,7 +355,22 @@ h1{
 }
 
 .toast{
-    margin-top: 10px;
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    padding: 10px 14px;
+    border-radius: 900px;
+    border: 1px solid rgba(140,110,190,.18);
+    background: rgba(255, 255, 255, .85);
+    box-shadow: 0 14px 28px rgba(60,30,110,.12);
+
+    max-width: calc(100vw - 32px);
+    text-align: center;
+    
+    margin-top: 15px;
     font-weight: 900;
     min-height: 20px;
     color: rgba(43,34,64,.78);
