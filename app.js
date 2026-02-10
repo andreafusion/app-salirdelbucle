@@ -513,6 +513,12 @@ $("#clearDumpAll").addEventListener("click", () => {
     renderDump();
     say("Cajón vaciado 🧺");
 });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js");
+  });
+}
+
 
 /*Init*/
 
